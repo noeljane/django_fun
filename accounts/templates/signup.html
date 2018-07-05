@@ -7,6 +7,7 @@
   <body>
     <h1>Sign up!</h1>
     <form method="post">
+      {% csrf_token %}
       {% for field in signup_form %}
 
         {% if field.name == 'password'%}
