@@ -6,6 +6,20 @@
   </head>
   <body>
     <h1>Sign up!</h1>
+    <form method="post">
+      {% for field in signup_form %}
+
+        {% if field.name == 'password'%}
+          {{field.label}}
+          <input type="password" name="{{field.name}}"/>
+
+        {% else %}
+          {{field.label}}
+          <input name="{{field.name}}"/>
+        {% endif %}
+      {% endfor %}
+      <input type="submit" value="Register"/>
+    </form>
 
   </body>
 </html>
