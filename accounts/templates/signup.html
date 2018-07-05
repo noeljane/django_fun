@@ -5,22 +5,28 @@
     <title></title>
   </head>
   <body>
-    <h1>Sign up!</h1>
-    <form method="post">
-      {% csrf_token %}
-      {% for field in signup_form %}
+    {% if registered %}
+      <h4>Thank you for registering!</h4>
+      <a href=#>Click here to Login!<a>
+    {% else %}
 
-        {% if field.name == 'password'%}
-          {{field.label}}
-          <input type="password" name="{{field.name}}"/>
+      <h1>Sign up!</h1>
+      <form method="POST">
+        {% csrf_token %}
+        {% for field in signup_form %}
 
-        {% else %}
-          {{field.label}}
-          <input name="{{field.name}}"/>
-        {% endif %}
-      {% endfor %}
-      <input type="submit" value="Register"/>
-    </form>
+          {% if field.name == 'password'%}
+            {{field.label}}
+            <input type="password" name="{{field.name}}"/>
+
+          {% else %}
+            {{field.label}}
+            <input name="{{field.name}}"/>
+          {% endif %}
+        {% endfor %}
+        <input type="submit" value="Register"/>
+      </form>
+    {% endif %}
 
   </body>
 </html>
