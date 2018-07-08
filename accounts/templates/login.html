@@ -8,7 +8,23 @@
     {% extends 'base.html' %}
     {% block base %}
 
-      <h1>Log in!</h1>
+      <h1> Log in! </h1>
+      {% if error %}
+        <h5>{{error}}</h5>
+      {% else %}
+      <h2>Here's the form to log in:</h2>
+      <form action="{% url 'login' %}" method="POST ">
+        {% csrf_token %}
+        <label>Username</label>
+        <input type="text" name="username"  required />
+
+        <label>Password</label>
+        <input type="password" name="password" required />
+
+        <input type="submit" value="Login">
+      </form>
+    {% endif %}
+
 
     {% endblock %}
 
