@@ -32,7 +32,6 @@ def login(request):
             auth.login(request, user)
             return redirect('home')
         else:
-
             return render(request, 'login.html', {
             'title': 'Something went wrong',
             'error': 'Username or Password Invalid'
@@ -41,4 +40,6 @@ def login(request):
     return render(request, 'login.html', {'title': 'Please Login'})
 
 def logout(request):
-    return render(request, 'logout.html')
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('home') 
