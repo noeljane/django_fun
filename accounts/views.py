@@ -25,7 +25,7 @@ def signup(request):
 def login(request):
     if request.method == 'POST':
         user = auth.authenticate(
-        username = request.POST['username'],
+        email = request.POST['username'],
         password = request.POST['password']
         )
         if user is not None:
@@ -42,4 +42,4 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        return redirect('home') 
+        return redirect('home')
