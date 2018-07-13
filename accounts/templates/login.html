@@ -11,7 +11,7 @@
     <h1>{{title}} </h1>
     {# this is the bootstrap form#}
     {% if error %}
-      <h5>{{error}}</h5>
+      <h5 class="mt-5 text-center text-danger">{{error}}</h5>
 
     {% else %}
     <form action="{% url 'login' %}" method="POST">

@@ -22,12 +22,12 @@ def signup(request):
     }
     return render(request, 'signup.html', context)
 
+
 def login(request):
     if request.method == 'POST':
-        user = auth.authenticate(
-        username = request.POST['username'],
+        username = request.POST['username']
         password = request.POST['password']
-        )
+        user = auth.authenticate(username,password)
         if user is not None:
             auth.login(request, user)
             return redirect('home')
