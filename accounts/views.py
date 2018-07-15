@@ -23,7 +23,7 @@ def signup(request):
     return render(request, 'signup.html', context)
 
 
-def login(request):
+def auth_login(request):
     if request.method == 'POST':
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
