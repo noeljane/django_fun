@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>New Log In Form</title>
+  </head>
+  <body>
+    {% extends 'base.html'%}
+    {% block base%}
+    {% if form.errors %}
+      <p>Your username and password didn't match. Please try again</p>
+    {% endif %}
+    {% if next %}
+      {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+      {% else %}
+        <p> Please login to see this page.</p>
+      {% endif %}
+    {% endif %}
+    
+    {% endblock %}
+  </body>
+</html>

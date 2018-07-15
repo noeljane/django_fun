@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    {% extends 'base.html' %}
+    {% block base %}
+    {% if registered %}
+      <h4>Thank you for registering!</h4>
+      <a href=#>Click here to Login!<a>
+    {% else %}
+
+      <h1>Sign up!</h1>
+      <form method="POST">
+        {% csrf_token %}
+        {% for field in signup_form %}
+
+          {% if field.name == 'password'%}
+            {{field.label}}
+            <input type="password" name="{{field.name}}"/>
+
+          {% else %}
+            {{field.label}}
+            <input name="{{field.name}}"/>
+          {% endif %}
+        {% endfor %}
+        <input type="submit" value="Register"/>
+      </form>
+    {% endif %}
+
+    {% endblock %}
+
+  </body>
+</html>
