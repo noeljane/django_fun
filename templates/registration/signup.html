@@ -9,7 +9,7 @@
     {% block base %}
     {% if registered %}
       <h4>Thank you for registering!</h4>
-      <a href=#>Click here to Login!<a>
+      <a href="{% url 'login'%}">Click here to Login!<a>
     {% else %}
 
       <h1>Sign up!</h1>
