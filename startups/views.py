@@ -6,7 +6,11 @@ from .models import Startup
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    context = {
+    'title':'Silly Startups',
+    'startups': Startup.objects.order_by('-likes'),
+    }
+    return render(request, 'home.html', context)
 
 @login_required
 def create(request):
