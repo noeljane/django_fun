@@ -1,11 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .forms import StartupForm
+from .models import Startup
 
 
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
 
+@login_required
 def create(request):
     if request.method == 'POST':
         startup_form = StartupForm(data=request.POST)
