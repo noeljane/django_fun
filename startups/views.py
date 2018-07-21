@@ -8,7 +8,7 @@ from .models import Startup
 def home(request):
     context = {
     'title':'Silly Startups',
-    'startups': Startup.objects.order_by('-likes'),
+    'startups': Startup.objects,
     }
     return render(request, 'home.html', context)
 
