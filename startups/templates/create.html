@@ -8,7 +8,17 @@
     {% extends 'base.html' %}
     {% block base %}
     <h1>You can be a founder now.</h1>
-    <h2>Play startup roulette to get your startup idea now. </h2>
+
+    {% if error %}
+      <h6 class="text-center text danger">{{error}}</h6>
+    {% else %}
+      <h2>Play startup roulette to get your startup idea now. </h2>
+      <form action="{% url 'create'%}" method="POST">
+        {% csrf_token %}
+        {# {% for field in startup_form%}#}
+
+      </form>
+    {%endif%}
     {% endblock %}
   </body>
 </html>
