@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Here's where to create a new startup</title>
+  </head>
+  <body>
+    {% extends 'base.html' %}
+    {% block base %}
+    <h1>You can be a founder now.</h1>
+
+    {% if error %}
+      <h6 class="text-center text danger">{{error}}</h6>
+    {% else %}
+      <h2>Play startup roulette to get your startup idea now. </h2>
+
+      <form action="{% url 'create'%}" method="POST">
+        {% csrf_token %}
+        {% for field in startup_form %}
+          {{field.label}}
+          <input type="text" name="{{field.name}}" />
+          <span class="error text-danger">{{field.errors}}</span>
+        {% endfor %}
+        <input type="submit" value="Add Startup">
+      </form>
+
+    {%endif%}
+    
+    {% endblock %}
+  </body>
+</html>
