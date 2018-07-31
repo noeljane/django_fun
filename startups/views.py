@@ -31,3 +31,9 @@ def create(request):
     'title': 'Make a startup',
     'startup_form':startup_form
     })
+
+def delete(request, startup_id):
+    if request.method == 'POST':
+        startup = get_object_or_404(Startup, pk=startup_id)
+        book.delete()
+        return redirect('profile', user_id=request.user.id)
