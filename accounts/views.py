@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_list_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm
@@ -47,14 +47,14 @@ def logout(request):
         auth.logout(request)
         return redirect('home')
 
-@login_required
-def profile(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
-    user_startups = Startup.objects.filter(startup_id=user_id)
+# @login_required
+def profile(request, founder_id):
+    founder = get_object_or_404(User, pk=founder_id)
+    founder_startups = Startup.objects.filter(founder_id=founder_id)
     context = {
-    'title': 'Hello and welcome {}'.format(user.first_name),
-    'user': user,
-    'user_startups': user_startups
+    'title': 'Hello and welcome {}'.format(founder.first_name),
+    'founder': founder,
+    'founder_startups': founder_startups
     }
 
     return render(request, 'profile.html', context)
