@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import StartupForm
+from django.contrib import auth
 from .models import Startup
-
 
 # Create your views here.
 def home(request):
@@ -30,3 +31,5 @@ def create(request):
     'title': 'Make a startup',
     'startup_form':startup_form
     })
+
+    
