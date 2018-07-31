@@ -9,18 +9,21 @@
 
     {% block base %}
     <h1>this is something I put in home.html </h1>
-    {% endblock %}
+
     {% if startups %}
       {% for startup in startups%}
-        <p>Added by {{startup.founder}}</p>
+      <div>
+        <p>{{startup.founder}}:</p>
         <p>{{startup.name}}</p>
         <p>{{startup.tagline}}</p>
         <p>{{startup.descriptions}}</p>
         <p>{{startup.likes}}</p>
+      </div>
       {% endfor %}
     {% endif %}
 
 
 
+    {% endblock %}
   </body>
 </html>

@@ -7,13 +7,14 @@ from .models import Startup
 # Create your views here.
 def home(request):
     context = {
-    'title':'Silly Startups',
-    'startups': Startup.objects,
+    'title': 'Silly Startup Generator!',
+    'startups': Startup.objects.order_by('-likes'),
     }
     return render(request, 'home.html', context)
 
-@login_required
+@login_required()
 def create(request):
+    startup_form = StartupForm()
     if request.method == 'POST':
         startup_form = StartupForm(data=request.POST)
         if startup_form.is_valid():
