@@ -47,14 +47,14 @@ def logout(request):
         auth.logout(request)
         return redirect('home')
 
-# @login_required
+@login_required
 def profile(request, founder_id):
     founder = get_object_or_404(User, pk=founder_id)
     founder_startups = Startup.objects.filter(founder_id=founder_id)
     context = {
     'title': 'Hello and welcome {}'.format(founder.first_name),
     'founder': founder,
-    'founder_startups': founder_startups
+    'founder_startups': founder_startups,
     }
 
     return render(request, 'profile.html', context)
