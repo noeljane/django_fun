@@ -31,15 +31,3 @@ def create(request):
     'title': 'Make a startup',
     'startup_form':startup_form
     })
-
-@login_required
-def profile(request, user_id):
-    user = get_object_or_404(User, pk=user_id)
-    user_startups = Startup.objects.filter(startup_id=user_id)
-    context = {
-    'title': 'Hello and welcome {}'.format(user.first_name),
-    'user': user,
-    'user_startups': user_startups
-    }
-
-    return render(request, 'profile.html', context)

@@ -1,6 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_list_or_404
+from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm
 from django.contrib import auth
+from startups.models import Startup
 
 
 # Create your views here.
@@ -43,3 +46,15 @@ def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         return redirect('home')
+
+@login_required
+def profile(request, user_id):
+    user = get_object_or_404(User, pk=user_id)
+    user_startups = Startup.objects.filter(startup_id=user_id)
+    context = {
+    'title': 'Hello and welcome {}'.format(user.first_name),
+    'user': user,
+    'user_startups': user_startups
+    }
+
+    return render(request, 'profile.html', context)
