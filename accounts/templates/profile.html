@@ -8,7 +8,14 @@
     {% extends 'base.html'%}
     {% block base %}
     <h1>Hey hey! It's my profile page!</h1>
-    {%%}
+    {% if founder_startups %}
+      <p>Congrats! You're a founder now</p>
+      {% for startup in founder_startups %}
+        <p>{{startup.name}}</p>
+        <p>{{startup.tagline}}</p>
+        <p>{{startup.description}}</p>
+      {% endfor %}
+    {% endif %}
 
 
     {% endblock %}
