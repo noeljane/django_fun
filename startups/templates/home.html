@@ -10,6 +10,9 @@
     {% block base %}
     {% if user.is_authenticated %}
       <h3> Hello {{user}}</h3>
+      <a href="{% url 'profile' user.id %}">
+        <button> Go To Your Profile </button>
+      </a>
     {% endif %}
     <h3></h3>
 
