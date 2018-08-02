@@ -16,7 +16,7 @@
         <p>{{startup.tagline}}</p>
         <p>{{startup.description}}</p>
         <p>{{startup.id}}</p>
-        <a href="#" >
+        <a href="{% url 'update' startup.id %}"  >
           <button> Update startup </button>
         </a>
 
