@@ -32,6 +32,23 @@ def create(request):
     'startup_form':startup_form
     })
 
+@login_required
+def update(request,startup_id):
+    startup = get_object_or_404(Startup, pk=startup_id)
+    if request.method == 'POST':
+        update_startup_form = StartupForm(request.POST, instance=startup)
+        if update_startup_form.is_valid():
+            update_startup_form.save()
+            return redirect('profile', founder_id=request.user.id)
+        else:
+            update_startup_form = StartupForm(instance=startup)
+            return render(request, 'update.html', {
+            'title': 'Update {}'.format(startup.name),
+            'update_startup_form': update_startup_form,
+            'startup': startup,
+            })
+
+@login_required
 def delete(request, startup_id):
     if request.method == 'POST':
         startup = get_object_or_404(Startup, pk=startup_id)
