@@ -20,6 +20,9 @@
           <button> Update startup </button>
         </a>
 
+        <a href="javascript:{document.getElementById('delete-{{startup.id}}').submit()}" >
+          <button> Defund startup </button>
+        </a>
 
 
         <form id="delete-{{startup.id}}"  action="{% url 'delete' startup.id %}" method="POST">

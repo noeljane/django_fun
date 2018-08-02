@@ -35,5 +35,5 @@ def create(request):
 def delete(request, startup_id):
     if request.method == 'POST':
         startup = get_object_or_404(Startup, pk=startup_id)
-        book.delete()
-        return redirect('profile', user_id=request.user.id)
+        startup.delete()
+        return redirect('profile', founder_id=request.user.id)
