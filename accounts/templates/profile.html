@@ -11,17 +11,21 @@
     {% if founder_startups %}
       <p>Congrats! You're a founder now</p>
       {% for startup in founder_startups %}
+
         <p>{{startup.name}}</p>
         <p>{{startup.tagline}}</p>
         <p>{{startup.description}}</p>
+        <p>{{startup.id}}</p>
         <a href="#" >
           <button> Update startup </button>
         </a>
-        <a href="#" >
-          <button >Defund startup </button>
-        </a>
 
 
+
+        <form id="delete-{{startup.id}}"  action="{% url 'delete' startup.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden">
+        </form>
 
 
       {% endfor %}
