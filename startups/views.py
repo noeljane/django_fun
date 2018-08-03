@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .forms import StartupForm
-from django.contrib import auth
 from .models import Startup
 
 # Create your views here.
@@ -35,6 +33,7 @@ def create(request):
 @login_required
 def update(request,startup_id):
     startup = get_object_or_404(Startup, pk=startup_id)
+    update_startup_form = StartupForm(instance=startup)
     if request.method == 'POST':
         update_startup_form = StartupForm(request.POST, instance=startup)
         if update_startup_form.is_valid():
@@ -42,7 +41,7 @@ def update(request,startup_id):
             return redirect('profile', founder_id=request.user.id)
         else:
             update_startup_form = StartupForm(instance=startup)
-            return render(request, 'update.html', {
+    return render(request, 'update.html', {
             'title': 'Update {}'.format(startup.name),
             'update_startup_form': update_startup_form,
             'startup': startup,
