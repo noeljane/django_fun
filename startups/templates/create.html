@@ -7,6 +7,7 @@
   <body>
     {% extends 'base.html' %}
     {% block base %}
+    {% load static %}
     <h1>You can be a founder now.</h1>
 
     {% if error %}
@@ -25,7 +26,11 @@
       </form>
 
     {%endif%}
+    <script type="text/javascript" src="{% static  'js/main.js' %}">
+    </script>
 
     {% endblock %}
+
+
   </body>
 </html>
