@@ -5,6 +5,19 @@
     <title></title>
   </head>
   <body>
+    {% extends 'base.html' %} {% block base %}
     <h1>Let's disrupt this shit!</h1>
+    <h2> Update your Startup Stuff </h2>
+    <form  action="#" method="POST">
+      {% csrf_token %}
+      {% for field in update_startup_form %}
+          {{field.label}}
+          <input  name="{{field.name}}" value="{{field.value}}">
+          <span class="error text-danger">{{field.errors}}</span>
+
+      {% endfor %}
+      <input type="submit" name="" value="Update Startup"/>
+    </form>
+    {% endblock %}
   </body>
 </html>
