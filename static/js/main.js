@@ -5,9 +5,11 @@ $(function () {
   //Variables
   let $oldName = $('#oldName');
   let $nameForm = $('#nameForm')
+  let $newName = $('#Name')
+  
 
 
-  $nameForm.on('submit', getNewName)
+  $nameForm.on('submit', getRouletteName)
 
   //This function takes the vowels out of a string
   function shortcut(string) {
@@ -22,14 +24,14 @@ $(function () {
   };
 
   // Get info from Name Field
-    //Write function that obtains the value of the input in the form
-    //set variable of name to pass to the shortcut function
-  function getNewName(evt) {
-    evt.preventDefault()
-    console.log("I'm running a function now.");
-    
-
+  function getRouletteName(evt) {
+    evt.preventDefault();
+    let rouletteName = shortcut($oldName.val())
+    console.log(rouletteName)
+    return rouletteName
   };
+
+
 
 
 
