@@ -5,8 +5,10 @@ $(function () {
   //Variables
   let $oldName = $('#oldName');
   let $nameForm = $('#nameForm')
-  let $newName = $('#Name')
-  
+  let $newName = $('#name')
+  console.log($newName.val())
+
+
 
 
   $nameForm.on('submit', getRouletteName)
@@ -28,8 +30,15 @@ $(function () {
     evt.preventDefault();
     let rouletteName = shortcut($oldName.val())
     console.log(rouletteName)
+    $newName.val(rouletteName)
     return rouletteName
   };
+
+
+
+
+
+
 
 
 
