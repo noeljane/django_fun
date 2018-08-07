@@ -4,16 +4,14 @@ $(function () {
 
   //Variables
   let $oldName = $('#oldName');
-  let $nameForm = $('#nameForm')
-  let $newName = $('#name')
-  console.log($newName.val())
+  let $nameForm = $('#nameForm');
+  let $newName = $('#name');
+  let $taglineForm = $('#taglineForm');
 
 
+  //Functions to get Cool Things on Forms
 
-
-  $nameForm.on('submit', getRouletteName)
-
-  //This function takes the vowels out of a string
+  //Takes the vowels out of a string
   function shortcut(string) {
     let newString = ""
     let vowels = ['a', 'e', 'i', 'o', 'u']
@@ -25,26 +23,19 @@ $(function () {
     return newString
   };
 
-  // Get info from Name Field
+  // Get info from Name Field & Place in the Startup Form
   function getRouletteName(evt) {
     evt.preventDefault();
     let rouletteName = shortcut($oldName.val())
     console.log(rouletteName)
     $newName.val(rouletteName)
-    return rouletteName
   };
 
 
 
 
-
-
-
-
-
-
-
   // Run function to get new Name
+  $nameForm.on('submit', getRouletteName)
   //Set value for form tag as the new name
   //Generate Tagline for new name using function from before
 
