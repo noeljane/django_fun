@@ -33,9 +33,13 @@
       <form action="{% url 'create'%}" method="POST">
         {% csrf_token %}
         {% for field in startup_form %}
-          {{field.label}}
-          <input id="{{field.name}}" type="text" name="{{field.name}}"  />
-          <span class="error text-danger">{{field.errors}}</span>
+          {% if field.name == "photo"%}
+            <input id="{{field.name}}" type="hidden"/>
+          {% else %}
+            {{field.label}}
+            <input id="{{field.name}}" type="text" name="{{field.name}}"  />
+            <span class="error text-danger">{{field.errors}}</span>
+          {% endif %}
         {% endfor %}
         <input type="submit" value="Add Startup">
       </form>
