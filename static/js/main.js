@@ -49,10 +49,11 @@ $(function () {
     evt.preventDefault();
     let rouletteName = shortcut($oldName.val());
     console.log(rouletteName);
-    makeTagline($noun.val());
-    console.log(makeTagline($noun.val()));
+    let rouletteTagline = makeTagline($noun.val());
+    console.log(rouletteTagline);
     //Set value for form tag as the new name
     $newName.val(rouletteName);
+    $newTagline.val(rouletteTagline)
   };
 
 
