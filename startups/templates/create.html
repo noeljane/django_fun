@@ -26,7 +26,7 @@
         <button id=""type="submit"> Play Startup Roulette </button>
       </form>
 
-      
+
 
 
 
@@ -34,7 +34,7 @@
         {% csrf_token %}
         {% for field in startup_form %}
           {{field.label}}
-          <input id="{{field.name}}" type="text" name="{{field.name}}" value="Press the button above to change your startup name" />
+          <input id="{{field.name}}" type="text" name="{{field.name}}"  />
           <span class="error text-danger">{{field.errors}}</span>
         {% endfor %}
         <input type="submit" value="Add Startup">

@@ -45,26 +45,18 @@ $(function () {
   };
 
   // Get info from Name Field & Place in the Startup Form
-  function getRouletteName(evt, userNoun) {
+  function getRouletteStartup(evt, userNoun) {
     evt.preventDefault();
     let rouletteName = shortcut($oldName.val());
-    console.log(rouletteName);
     let rouletteTagline = makeTagline($noun.val());
-    console.log(rouletteTagline);
     //Set value for form tag as the new name
     $newName.val(rouletteName);
     $newTagline.val(rouletteTagline)
   };
 
 
-
-
   // Run function to get new Name
-  $nameForm.on('submit', getRouletteName)
-
-
-
-
+  $nameForm.on('submit', getRouletteStartup)
   //API call to the Unsplash API to get an image that matches one of the nouns
 
 
