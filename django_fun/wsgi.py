@@ -8,9 +8,16 @@ https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/
 """
 
 import os
+import decouple from config
+
+DEV_MODE = config('DEV_MODE', default=False)
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_fun.settings")
+if DEV_MODE:
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_fun.settings")
+else:
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_fun.prod_settings")
+
 
 application = get_wsgi_application()

@@ -56,8 +56,20 @@ $(function () {
 
 
   // Run function to get new Name
-  $nameForm.on('submit', getRouletteStartup)
-  //API call to the Unsplash API to get an image that matches one of the nouns
+  $nameForm.on('submit', getRouletteStartup);
 
+
+  //API call to the Unsplash API to get an image that matches one of the nouns
+  function unsplash() {
+    $.ajax({
+      url:"https://api.unsplash.com/photos/search/?client_id="+ SECRET_KEY + "&query=puppies&page=1",
+      type:'GET',
+      dataType:'json',
+      data: {
+
+      }
+    })
+
+  };
 
 });
