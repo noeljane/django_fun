@@ -11,6 +11,8 @@ $(function () {
 
   let $noun = $('#noun')
 
+  
+
 
 
   //Takes the vowels out of a string
@@ -51,7 +53,8 @@ $(function () {
     let rouletteTagline = makeTagline($noun.val());
     //Set value for form tag as the new name
     $newName.val(rouletteName);
-    $newTagline.val(rouletteTagline)
+    $newTagline.val(rouletteTagline);
+    unsplash();
   };
 
 
@@ -62,13 +65,24 @@ $(function () {
   //API call to the Unsplash API to get an image that matches one of the nouns
   function unsplash() {
     $.ajax({
-      url:"https://api.unsplash.com/photos/search/?client_id="+ SECRET_KEY + "&query=puppies&page=1",
-      type:'GET',
-      dataType:'json',
-      data: {
-
+      url: 'https://api.unsplash.com/photos/search/?client_id=${client_id}&query=puppies&page=1',
+      type: 'GET',
+      data: data,
+      dataType: 'json',
+      success: function(data){
+        console.log('Data: ' + data);
+      },
+      error : function(request,error) {
+        alert("Request: " + JSON.stringify(request))
       }
-    })
+      //To Finish API Request: 
+      //Figure out how to get client id from the back end to the front end using settings.py and .env
+      //Figure out how to get a random photo populate when you make the ajax request (ie generate a random number from the length of the array in the json response)
+      //post that image to the screen
+      //make it so you can click things separately. 
+    
+    });
+   
 
   };
 
