@@ -14,12 +14,7 @@ def home(request):
     return render(request, 'home.html', context)
 
 @login_required()
-def create(request):
-    # API request
-    ACCESS_KEY = config('ACCESS_KEY')
-    response = requests.get('https://api.unsplash.com/photos/search/?client_id='+ ACCESS_KEY + '&query=puppies&page=1')
-    unsplash_data = response.json()
-    
+def create(request):   
 
     startup_form = StartupForm()
     if request.method == 'POST':
@@ -36,8 +31,15 @@ def create(request):
     return render(request, 'create.html', {
     'title': 'Make a startup',
     'startup_form':startup_form,
-    'unsplash':unsplash_data
     })
+def add_picture(request):
+    # API request
+    ACCESS_KEY = config('ACCESS_KEY')
+    response = requests.get('https://api.unsplash.com/photos/search/?client_id='+ ACCESS_KEY + '&query=puppies&page=1')
+    unsplash_data = response.json()
+    #Generate random number
+    #Use random number to get a random picture
+
 
 @login_required
 def update(request,startup_id):
