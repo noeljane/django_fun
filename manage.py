@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 import os
 import sys
+from decouple import config
+
+DEV_MODE = config('DEV_MODE', default=False)
 
 if __name__ == "__main__":
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_fun.settings")
+    if DEV_MODE:
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_fun.settings")
+    else:
+       os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_fun.prod_settings") 
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

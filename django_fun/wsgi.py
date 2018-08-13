@@ -8,7 +8,7 @@ https://docs.djangoproject.com/en/2.0/howto/deployment/wsgi/
 """
 
 import os
-import decouple from config
+from decouple import config
 
 DEV_MODE = config('DEV_MODE', default=False)
 
