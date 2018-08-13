@@ -24,7 +24,7 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '!#eu%*h=w6u6pqlp8giw3g+q2=xkj43ack@p2208x8-4950j2='
-CLIENT_ID = config(CLIENT_ID)
+CLIENT_ID = config('CLIENT_ID')
 # ACCESS_KEY = config(ACCESS_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
