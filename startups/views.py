@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import StartupForm
 from .models import Startup
 import requests
-from django.django_fun.settings import CLIENT_ID
+from decouple import config
 
 # Create your views here.
 def home(request):
@@ -12,10 +12,15 @@ def home(request):
     'startups': Startup.objects.order_by('-likes'),
     }
     return render(request, 'home.html', context)
+
 @login_required()
 def create(request):
-    response = requests.get('https://api.unsplash.com/photos/search/?client_id=${CLIENT_ID}&query=puppies&page=1')
+    # API request
+    ACCESS_KEY = config('ACCESS_KEY')
+    response = requests.get('https://api.unsplash.com/photos/search/?client_id='+ ACCESS_KEY + '&query=puppies&page=1')
     unsplash_data = response.json()
+    
+
     startup_form = StartupForm()
     if request.method == 'POST':
         startup_form = StartupForm(data=request.POST)
@@ -31,7 +36,7 @@ def create(request):
     return render(request, 'create.html', {
     'title': 'Make a startup',
     'startup_form':startup_form,
-    'id':unsplash_data[0][id]
+    'unsplash':unsplash_data
     })
 
 @login_required
