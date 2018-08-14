@@ -35,7 +35,7 @@
         {% csrf_token %}
         {% for field in startup_form %}
           {% if field.name == "photo"%}
-            <input id="{{field.name}}" type="hidden"/>
+            <input id="{{field.name}}" type="text"/>
           {% else %}
             {{field.label}}
             <input id="{{field.name}}" type="text" name="{{field.name}}"  />
