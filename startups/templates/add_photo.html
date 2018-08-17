@@ -11,7 +11,14 @@
     {% block base %}
 
     <h1>hI HI</h1>
-    <form action='POST'></form>
+    <h3>{{startup.name}}</h3>
+    <form action='#' method="POST">
+        <input type="text" name="{{startup.photo}}">
+        <input type="text" name="{{startup.photo_attribute}}" value="Unsplash">
+        <input type="text" name="{{startup.photo_photographer}}">
+        <input type="text" name="{{startup.profile_link}}">
+        <input type="submit" value="Add Photo"/>
+    </form>
     {% endblock %}
 </body>
 </html>
