@@ -32,15 +32,24 @@ def create(request):
     'startup_form':startup_form
     })
 
-def add_photo(request):
+# def add_photo(request):
     # API request
-    ACCESS_KEY = config('ACCESS_KEY')
-    response = requests.get('https://api.unsplash.com/photos/search/?client_id='+ ACCESS_KEY + '&query=puppies&page=1')
-    unsplash_data = response.json()
+    # ACCESS_KEY = config('ACCESS_KEY')
+    # response = requests.get('https://api.unsplash.com/photos/search/?client_id='+ ACCESS_KEY + '&query=puppies&page=1')
+    # unsplash_data = response.json()
     #Generate random number
     #Use random number to get a random picture
-    return render(request, 'add_picture.html', {
-        'data': unsplash_data
+    # return render(request, 'add_photo.html', {
+    #         'title': 'Update {}'.format(startup.name),
+    #         'startup': startup,
+    #         })
+
+def add_photo(request, startup_id):
+    startup = get_object_or_404(Startup, pk=startup_id)
+    return render(request, 'add_photo.html', {
+        'title': 'oh my!',
+        'startup': startup,
+
     })
 
 
