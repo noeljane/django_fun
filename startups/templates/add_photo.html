@@ -12,8 +12,11 @@
 
     <h1>hI HI</h1>
     <h3>{{startup.name}}</h3>
+    <img src='{{photo}}'/>
+
     <form action='#' method="POST">
-        <input type="text" name="{{startup.photo}}">
+        {% csrf_token %}
+        <input type="text" name="photo">
         <input type="text" name="{{startup.photo_attribute}}" value="Unsplash">
         <input type="text" name="{{startup.photo_photographer}}">
         <input type="text" name="{{startup.profile_link}}">

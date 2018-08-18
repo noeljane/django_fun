@@ -46,9 +46,19 @@ def create(request):
 
 def add_photo(request, startup_id):
     startup = get_object_or_404(Startup, pk=startup_id)
+    # API request
+    ACCESS_KEY = config('ACCESS_KEY')
+    response = requests.get('https://api.unsplash.com/photos/search/?client_id='+ ACCESS_KEY + '&query=puppies&page=1')
+    unsplash_data = response.json()
+    print(unsplash_data[0]['urls']['regular'])
+    photo_link = unsplash_data[0]['urls']['regular']
+    if request.method == 'POST':
+        #Manually save all values from API Request
+        print("Your request has been posted")
     return render(request, 'add_photo.html', {
         'title': 'oh my!',
         'startup': startup,
+        'photo': photo_link
 
     })
 
