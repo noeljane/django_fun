@@ -19,6 +19,9 @@
         <a href="{% url 'update' startup.id %}"  >
           <button> Update startup </button>
         </a>
+        <a href="{% url 'add_photo' startup.id %}"  >
+          <button> Add Photo </button>
+        </a>
 
         <a href="javascript:{document.getElementById('delete-{{startup.id}}').submit()}" >
           <button> Defund startup </button>
