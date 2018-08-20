@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Add Photo</title>
 </head>
 <body>
     {% extends 'base.html' %}
@@ -13,13 +13,12 @@
     <h1>hI HI</h1>
     <h3>{{startup.name}}</h3>
     <img src='{{photo}}'/>
+    <form action="#" method="GET">
+        <input type="submit" value="Play startup photo roulette"
+    </form>
 
     <form action='#' method="POST">
         {% csrf_token %}
-        <input type="text" name="photo">
-        <input type="text" name="{{startup.photo_attribute}}" value="Unsplash">
-        <input type="text" name="{{startup.photo_photographer}}">
-        <input type="text" name="{{startup.profile_link}}">
         <input type="submit" value="Add Photo"/>
     </form>
     {% endblock %}
