@@ -4,6 +4,7 @@ from .forms import StartupForm
 from .models import Startup
 import requests
 from decouple import config
+import random
 
 # Create your views here.
 def home(request):
@@ -32,17 +33,23 @@ def create(request):
     'startup_form':startup_form
     })
 
-# def add_photo(request):
+def get_photo(request):
     # API request
-    # ACCESS_KEY = config('ACCESS_KEY')
-    # response = requests.get('https://api.unsplash.com/photos/search/?client_id='+ ACCESS_KEY + '&query=puppies&page=1')
-    # unsplash_data = response.json()
-    #Generate random number
-    #Use random number to get a random picture
-    # return render(request, 'add_photo.html', {
-    #         'title': 'Update {}'.format(startup.name),
-    #         'startup': startup,
-    #         })
+    ACCESS_KEY = config('ACCESS_KEY')
+    response = requests.get('https://api.unsplash.com/photos/search/?client_id='+ ACCESS_KEY + '&query=puppies&page=1')
+    unsplash_data = response.json()
+    print(len(unsplash_data))
+    # Generate random number
+    # Set random number to a variable
+    # Use random number to get a random picture
+    photo_link = unsplash_data[0]['urls']['regular']
+    
+    return render(request, 'add_photo.html', {
+            'title': 'Update {}'.format(startup.name),
+            'startup': startup,
+            'photo_link': photo_link,
+
+            })
 
 def add_photo(request, startup_id):
     startup = get_object_or_404(Startup, pk=startup_id)
@@ -50,8 +57,10 @@ def add_photo(request, startup_id):
     ACCESS_KEY = config('ACCESS_KEY')
     response = requests.get('https://api.unsplash.com/photos/search/?client_id='+ ACCESS_KEY + '&query=puppies&page=1')
     unsplash_data = response.json()
-    print(unsplash_data[0]['urls']['regular'])
-    photo_link = unsplash_data[0]['urls']['regular']
+    print(len(unsplash_data))
+    random_number = random.randint(0, len(unsplash_data))
+    print(unsplash_data[random_number]['urls']['regular'])
+    photo_link = unsplash_data[random_number]['urls']['regular']
     if request.method == 'POST':
         #Manually save all values from API Request
         print("Your request has been posted")
