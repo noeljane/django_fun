@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import StartupForm
 from .models import Startup
-import requests
 from decouple import config
+import requests
 import random
 
 # Create your views here.
@@ -35,6 +35,7 @@ def create(request):
 
 def get_photo(request, startup_id):
     startup = get_object_or_404(Startup, pk=startup_id)
+    print(request)
     # API request
     ACCESS_KEY = config('ACCESS_KEY')
     response = requests.get('https://api.unsplash.com/photos/search/?client_id='+ ACCESS_KEY + '&query=puppies&page=1')
