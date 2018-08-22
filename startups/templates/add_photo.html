@@ -21,7 +21,8 @@
     </ul>
 
    
-    <form action="{% url 'add_photo' startup.id %}" method="GET">
+    <form action="{% url 'get_photo' startup.id %}" method="GET">
+        {% csrf_token %}
         <input type="submit" value="Play startup photo roulette"
     </form>
 
