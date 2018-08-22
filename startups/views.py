@@ -33,25 +33,7 @@ def create(request):
     'startup_form':startup_form
     })
 
-def get_photo(request):
-    # API request
-    ACCESS_KEY = config('ACCESS_KEY')
-    response = requests.get('https://api.unsplash.com/photos/search/?client_id='+ ACCESS_KEY + '&query=puppies&page=1')
-    unsplash_data = response.json()
-    print(len(unsplash_data))
-    # Generate random number
-    # Set random number to a variable
-    # Use random number to get a random picture
-    photo_link = unsplash_data[0]['urls']['regular']
-    
-    return render(request, 'add_photo.html', {
-            'title': 'Update {}'.format(startup.name),
-            'startup': startup,
-            'photo_link': photo_link,
-
-        })
-
-def add_photo(request, startup_id):
+def get_photo(request, startup_id):
     startup = get_object_or_404(Startup, pk=startup_id)
     # API request
     ACCESS_KEY = config('ACCESS_KEY')
@@ -68,6 +50,26 @@ def add_photo(request, startup_id):
         'title': 'oh my!',
         'startup': startup,
         'photo': photo_link
+
+    })
+
+def add_photo(request, startup_id):
+    startup = get_object_or_404(Startup, pk=startup_id)
+    # API request
+    # ACCESS_KEY = config('ACCESS_KEY')
+    # response = requests.get('https://api.unsplash.com/photos/search/?client_id='+ ACCESS_KEY + '&query=puppies&page=1')
+    # unsplash_data = response.json()
+   
+    # random_number = random.randint(0, (len(unsplash_data)- 1))
+    # print(unsplash_data[random_number]['urls'])
+    # photo_link = unsplash_data[random_number]['urls']['small']
+    if request.method == 'POST':
+        #Manually save all values from API Request
+        print("Your request has been posted")
+    return render(request, 'add_photo.html', {
+        'title': 'oh my!',
+        'startup': startup,
+        # 'photo': photo_link
 
     })
 
