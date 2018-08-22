@@ -61,18 +61,4 @@ $(function () {
   // Run function to get new Name
   $nameForm.on('submit', getRouletteStartup);
 
-
-  //API call to the Unsplash API to get an image that matches one of the nouns
-  
-      //To Finish API Request: 
-      //Figure out how to get client id from the back end to the front end using settings.py and .env
-      //Figure out how to get a random photo populate when you make the ajax request (ie generate a random number from the length of the array in the json response)
-      //post that image to the screen
-      //make it so you can click things separately. 
-    
-    
-   
-
-  
-
 });
