@@ -29,7 +29,7 @@
    
     <form id="unsplashForm" action="{% url 'get_photo' startup.id %}" method="GET">
         {% csrf_token %}
-        <input type="text"/>
+        <input id="search" type="text"/>
         <input type="submit" value="Play startup photo roulette">
     </form>
 

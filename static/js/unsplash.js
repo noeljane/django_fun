@@ -2,25 +2,30 @@ $(function () {
     console.log("I've connected to your javascript file!");
 
     //Variables
-    const $form = $('#unsplashForm');
-    console.log($form);
+    const $unsplashForm = $('#unsplashForm');
+    const $searchInput = $('#search');
+    
+    const url = $unsplashForm.attr('action');
+    let data = null;
 
-    $form.submit(function(e) {
+    //Form Submit Function
+    $unsplashForm.submit(function(e) {
         e.preventDefault();
-        console.log("submit function is working now!")
+        data = $searchInput.val()
+        console.log("This is what data is now, son!")
+        console.log(data)
+        unsplash();
+    });
 
-    })
-
-
-    //Function
+    //API Functions
     function unsplash() {
         $.ajax({
-          url: 'https://api.unsplash.com/photos/search/?client_id=${client_id}&query=puppies&page=1',
+          url: url,
           type: 'GET',
-          data: data,
+          query_string: data,
           dataType: 'json',
           success: function(data){
-            console.log('Data: ' + data);
+            console.log('Query String: ' + data);
           },
           error : function(request,error) {
             alert("Request: " + JSON.stringify(request))
