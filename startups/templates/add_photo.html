@@ -27,13 +27,13 @@
     </ul>
 
    
-    <form id="unsplashForm" action="{% url 'get_photo' startup.id %}" method="GET">
+    <form id="unsplashForm" action="{% url 'get_photo' %}" method="GET">
         {% csrf_token %}
-        <input id="search" type="text"/>
+        <input id="search" type="text" name="term"/>
         <input type="submit" value="Play startup photo roulette">
     </form>
 
-    <form action='{% url 'add_photo' startup.id %}' method="POST">
+    <form action="{% url 'add_photo' startup.id %}" method="POST">
         {% csrf_token %}
         <input type="submit" value="Add Photo"/>
     </form>
