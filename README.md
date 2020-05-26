@@ -1,11 +1,11 @@
-#django_fun
+# django_fun
 
 
 This is a fun app designed to help you brainstorm ideas for your next amazing startup.
 
-#ERD
+# ERD
 
-#Wireframes
+# Wireframes
 
 
-#How to clone and run locally: 
+# How to clone and run locally: 
